@@ -1,12 +1,12 @@
 # react-audio
 > Audio player components for react.
 
-## install:
+## install
 ```shell
 npm install -S afeiship/react-audio
 ```
 
-## usage:
+## usage
 1. import css
   ```scss
   @import "~react-audio/style.scss";
@@ -33,11 +33,13 @@ npm install -S afeiship/react-audio
   ReactDOM.render(<App/>, document.getElementById('app'));
   ```
 
-## docs:
+## docs
 - https://afeiship.github.io/react-audio/
 
-## resouces:
+## resouces
 - https://www.robinwieruch.de/minimal-react-webpack-babel-setup/
 - https://www.valentinog.com/blog/react-webpack-babel/
 - https://jestjs.io/docs/en/tutorial-react#snapshot-testing-with-mocks-enzyme-and-react-16
 - https://testing-library.com/docs/react-testing-library/api
+- https://stackoverflow.com/questions/1895476/how-to-style-a-select-dropdown-with-only-css
+

@@ -12,7 +12,8 @@ export default {
   resolve: {
     extensions: ['.scss', '.js', '.jsx'],
     alias: {
-      '@': resolve(__dirname, '../src')
+      '@': resolve(__dirname, '../src'),
+      'assets': resolve(__dirname, '../src/assets')
     }
   },
   module: {
@@ -35,7 +36,7 @@ export default {
         test: /\.(jpe?g|png|gif|svg|ico)$/i,
         loader: 'url-loader',
         options: {
-          name: 'assets/images/[name].[ext]',
+          name: 'assets/[name].[ext]',
           limit: 8192
         }
       }

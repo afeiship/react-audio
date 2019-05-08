@@ -142,6 +142,9 @@ export default class extends Component {
                   onChange={this._onRateChange}
                   name="rate"
                   className="react-audio__rate"
+                  style={{
+                    background: `#fff url(${require('./assets/icon-triangle.png')}) 90% / 10% no-repeat`
+                  }}
                   value={rate}>
                   <option value="1">常速</option>
                   <option value="1.25">x1.25 倍</option>
