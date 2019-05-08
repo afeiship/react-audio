@@ -1,6 +1,6 @@
 $react-audio-options: (
   primary-color: #0157ff,
-  handle-size: 14px,
+  handle-size: 14px
 ) !default;
 
 .react-audio {
@@ -92,6 +92,8 @@ $react-audio-options: (
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
+    background: url(https://image-static.segmentfault.com/388/624/3886241463-5cd2b064f273d_articlex) 90% / 15% no-repeat
+      #eee;
     padding: 3px 16px;
     border: 1px solid #ccc;
   }
@@ -115,14 +117,14 @@ $react-audio-options: (
     cursor: pointer;
     background: #ffffff;
     box-shadow: 0 0 5px 0 rgba(#000, 0.3);
-    &:after{
+    &:after {
       position: absolute;
-      content:"";
+      content: "";
       display: block;
-      top:-5px;
-      right:-5px;
-      bottom:-5px;
-      left:-5px;
+      top: -5px;
+      right: -5px;
+      bottom: -5px;
+      left: -5px;
     }
     &-wrapper {
       position: relative;
@@ -146,7 +148,7 @@ $react-audio-options: (
       left: 50%;
       top: 50%;
       width: 12px;
-      height:12px;
+      height: 12px;
       transform: translate(-50%, -50%);
     }
     &:active {
