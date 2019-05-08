@@ -13,8 +13,9 @@ export default merge(baseConfig, {
     react: 'react',
     classnames: 'classnames',
     noop: 'noop',
-    'next-audio': 'next-audio',
     'next-time-format': 'next-time-format',
+    'next-audio': 'next-audio',
+    'next-draggable': 'next-draggable',
     'react-dom': 'react-dom',
     'object-assign': 'object-assign',
     'prop-types': 'prop-types'
