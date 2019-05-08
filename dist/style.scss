@@ -142,7 +142,8 @@ $react-audio-options: (
     border-radius: 50%;
     background: #ffffff;
     border: none;
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 5px 0 rgba(#000, 0.05);
+    cursor: pointer;
     > img {
       position: absolute;
       left: 50%;

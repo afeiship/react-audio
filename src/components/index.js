@@ -8,8 +8,6 @@ import objectAssign from 'object-assign';
 import nxTimeformat from 'next-time-format';
 import NxDraggable from 'next-draggable';
 
-// status: 0: stop 1: play 2: pause
-
 const format = function(inTime) {
   if (inTime) {
     const { second, minute } = nxTimeformat(inTime * 1e3);
@@ -33,7 +31,6 @@ export default class extends Component {
 
   static defaultProps = {
     value: null,
-    status: 0,
     step: 0,
     onChange: noop
   };
@@ -41,8 +38,11 @@ export default class extends Component {
 
   constructor(inProps) {
     super(inProps);
-    const { status } = inProps;
-    this.state = { status, rate: 1, info: { current: 0, total: 0 } };
+    this.state = {
+      status: NxAudio.STATUS.init,
+      rate: 1,
+      info: { current: 0, total: 0 }
+    };
     this.audioElement = React.createRef();
     this.handleElement = React.createRef();
     this.barElement = React.createRef();
@@ -83,8 +83,8 @@ export default class extends Component {
   };
 
   _onHandleChange = (inEvent) => {
-    const { type, value } = inEvent.target;
-    if (type === 'drag') {
+    const { value } = inEvent.target;
+    if (inEvent.type === 'drag') {
       var rate = value.x / this.barBound.width;
       if (rate <= 1) {
         this.audio.move(rate);
@@ -113,25 +113,28 @@ export default class extends Component {
         <div className="react-audio__control">
           <div className="bd">
             <aside className="react-audio__status">
-              {status === 0 && (
+              {status === NxAudio.STATUS.init && (
                 <button
                   onClick={this._onAction.bind(this, 'play')}
                   className="action play">
                   <img src={require('./assets/icon-play.png')} />
                 </button>
               )}
-              {status === 1 && (
+              {(status === NxAudio.STATUS.pause ||
+                status === NxAudio.STATUS.play ||
+                status === NxAudio.STATUS.timeupdate) && (
                 <button
                   onClick={this._onAction.bind(this, 'pause')}
                   className="action pause">
                   <img src={require('./assets/icon-pause.png')} />
                 </button>
               )}
-              {status === 2 && (
+
+              {status === NxAudio.STATUS.ended && (
                 <button
                   onClick={this._onAction.bind(this, 'play')}
-                  className="action play">
-                  <img src={require('./assets/icon-play.png')} />
+                  className="action ended">
+                  <img src={require('./assets/icon-replay.png')} />
                 </button>
               )}
             </aside>
@@ -151,7 +154,9 @@ export default class extends Component {
                 </select>
               </header>
               <footer className="ft">
-                <div className="react-audio__description">{description}</div>
+                <div className="react-audio__description">
+                  {description}
+                </div>
                 <div className="react-audio__times">
                   <span className="current">{format(info.current)}</span> /{' '}
                   <span className="total">{format(info.total)}</span>
@@ -161,7 +166,10 @@ export default class extends Component {
           </div>
           <footer className="ft">
             <section ref={this.barElement} className="bar">
-              <div style={{ width: step }} className="react-audio__progress" />
+              <div
+                style={{ width: step }}
+                className="react-audio__progress"
+              />
               <div
                 style={{ left: step }}
                 ref={this.handleElement}
