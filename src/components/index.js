@@ -116,8 +116,7 @@ export default class extends Component {
                   <img src={require('./assets/icon-play.png')} />
                 </button>
               )}
-              {(status === NxAudio.STATUS.play ||
-                status === NxAudio.STATUS.timeupdate) && (
+              {status === NxAudio.STATUS.play && (
                 <button
                   onClick={this._onAction.bind(this, 'pause')}
                   className="action pause">
