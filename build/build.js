@@ -13,6 +13,7 @@ export default merge(baseConfig, {
     react: 'react',
     classnames: 'classnames',
     noop: 'noop',
+    'next-time-format': 'next-time-format',
     'next-audio': 'next-audio',
     'react-dom': 'react-dom',
     'object-assign': 'object-assign',
