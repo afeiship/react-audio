@@ -1,0 +1,66 @@
+{
+  "name": "react-audio",
+  "version": "1.0.0",
+  "description": "Audio player components for react.",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --env.TYPE=dev",
+    "build": "cross-env NODE_ENV=production webpack -p --env.TYPE=build",
+    "release": "cross-env NODE_ENV=production webpack -p --env.TYPE=release",
+    "docs": "cross-env NODE_ENV=production webpack -p --env.TYPE=docs",
+    "start": "node build/server.js",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/afeiship/react-audio.git"
+  },
+  "keywords": [
+    "react",
+    "component"
+  ],
+  "author": "afei",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/afeiship/react-audio/issues"
+  },
+  "homepage": "https://github.com/afeiship/react-audio#readme",
+  "devDependencies": {
+    "@babel/core": "^7.4.0",
+    "@babel/plugin-proposal-class-properties": "^7.4.0",
+    "@babel/plugin-proposal-decorators": "^7.4.0",
+    "@babel/preset-env": "^7.4.2",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/register": "^7.4.0",
+    "app-root-path": "^2.2.0",
+    "babel-loader": "^8.0.5",
+    "clean-webpack-plugin": "^2.0.1",
+    "copy-webpack-plugin": "^5.0.2",
+    "cross-env": "^5.2.0",
+    "css-loader": "^2.1.1",
+    "express": "^4.16.4",
+    "html-webpack-plugin": "^3.2.0",
+    "jest": "^24.5.0",
+    "mini-css-extract-plugin": "^0.5.0",
+    "node-sass": "^4.11.0",
+    "prettier": "^1.16.4",
+    "react-testing-library": "^6.0.2",
+    "sass-loader": "^7.1.0",
+    "semver-webpack-plugin": "github:afeiship/semver-webpack-plugin",
+    "style-loader": "^0.23.1",
+    "url-loader": "^1.1.2",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0",
+    "webpack-dev-server": "^3.2.1",
+    "webpack-merge": "^4.2.1"
+  },
+  "dependencies": {
+    "classnames": "^2.2.6",
+    "next-audio": "github:afeiship/next-audio",
+    "next-time-format": "github:afeiship/next-time-format",
+    "noop": "github:afeiship/noop",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.5",
+    "react-dom": "^16.8.5"
+  }
+}

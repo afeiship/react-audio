@@ -1,0 +1,124 @@
+$react-audio-options: () !default;
+
+.react-audio {
+  border: 1px solid #e7e7e7;
+  border-bottom: none;
+  border-radius: 2px;
+  $primary-color: #0157ff;
+  &__control {
+    > .bd {
+      box-sizing: border-box;
+      height: 60px;
+      padding: 10px 15px;
+      background: #f8f8f8;
+      display: flex;
+      flex-direction: row;
+    }
+    > .ft {
+      height: 5px;
+      background: #ececed;
+      position: relative;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    > .hd,
+    > .ft {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  &__status {
+    overflow: hidden;
+    margin-right: 10px;
+  }
+
+  &__title,
+  &__description {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: flex;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    max-width: 60%;
+    line-height: 22px;
+    height: 22px;
+  }
+
+  &__title {
+    font-size: 13px;
+  }
+
+  &__description {
+    color: #999;
+    font-size: 12px;
+  }
+
+  &__times {
+    color: #999;
+    font-size: 12px;
+    line-height: 22px;
+    > .current {
+      color: $primary-color;
+    }
+    > .total {
+      color: #000;
+    }
+  }
+
+  &__rate {
+    border: 1px solid #ccc;
+  }
+
+  &__progress {
+    position: absolute;
+    z-index: 1;
+    height: 5px;
+    left: 0;
+    background: $primary-color;
+  }
+
+  &__handle {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 14px;
+    height: 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    background: #ffffff;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
+  }
+
+  .flex1 {
+    flex: 1;
+  }
+
+  .action {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: none;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.05);
+    > img {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+    &:active {
+      background: #eee;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+}
