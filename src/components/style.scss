@@ -1,10 +1,23 @@
-$react-audio-options: () !default;
+$react-audio-options: (
+  primary-color: #0157ff,
+  handle-size: 14px,
+) !default;
 
 .react-audio {
+  $primary-color: map-get(
+    $map: $react-audio-options,
+    $key: primary-color
+  );
+  $handle-size: map-get(
+    $map: $react-audio-options,
+    $key: handle-size
+  );
+
   border: 1px solid #e7e7e7;
   border-bottom: none;
   border-radius: 2px;
-  $primary-color: #0157ff;
+  user-select: none;
+
   &__control {
     > .bd {
       box-sizing: border-box;
@@ -17,7 +30,11 @@ $react-audio-options: () !default;
     > .ft {
       height: 5px;
       background: #ececed;
-      position: relative;
+      .bar {
+        height: 5px;
+        position: relative;
+        margin-right: $handle-size;
+      }
     }
   }
 
@@ -72,6 +89,11 @@ $react-audio-options: () !default;
   }
 
   &__rate {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 3px 16px;
+    background: url(http://www.stackoverflow.com/favicon.ico) 90% / 15% no-repeat #eee;
     border: 1px solid #ccc;
   }
 
@@ -88,12 +110,24 @@ $react-audio-options: () !default;
     z-index: 2;
     top: 50%;
     transform: translateY(-50%);
-    width: 14px;
-    height: 14px;
+    width: $handle-size;
+    height: $handle-size;
     border-radius: 10px;
     cursor: pointer;
     background: #ffffff;
-    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 5px 0 rgba(#000, 0.3);
+    &:after{
+      position: absolute;
+      content:"";
+      display: block;
+      top:-5px;
+      right:-5px;
+      bottom:-5px;
+      left:-5px;
+    }
+    &-wrapper {
+      position: relative;
+    }
   }
 
   .flex1 {

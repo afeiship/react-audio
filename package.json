@@ -57,6 +57,7 @@
   "dependencies": {
     "classnames": "^2.2.6",
     "next-audio": "github:afeiship/next-audio",
+    "next-draggable": "github:afeiship/next-draggable",
     "next-time-format": "github:afeiship/next-time-format",
     "noop": "github:afeiship/noop",
     "prop-types": "^15.7.2",

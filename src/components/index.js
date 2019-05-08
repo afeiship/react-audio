@@ -6,6 +6,7 @@ import noop from 'noop';
 import NxAudio from 'next-audio';
 import objectAssign from 'object-assign';
 import nxTimeformat from 'next-time-format';
+import NxDraggable from 'next-draggable';
 
 // status: 0: stop 1: play 2: pause
 
@@ -43,12 +44,18 @@ export default class extends Component {
     const { status } = inProps;
     this.state = { status, rate: 1, info: { current: 0, total: 0 } };
     this.audioElement = React.createRef();
+    this.handleElement = React.createRef();
+    this.barElement = React.createRef();
   }
 
   componentDidMount() {
-    this.audio = new NxAudio({
-      element: this.audioElement.current,
-      onChange: this._onChange
+    const audioEl = this.audioElement.current;
+    const handleEl = this.handleElement.current;
+    const barEl = this.barElement.current;
+    this.barBound = barEl.getBoundingClientRect();
+    this.audio = new NxAudio(audioEl, { onChange: this._onChange });
+    this.draggable = new NxDraggable(handleEl, {
+      onChange: this._onHandleChange
     });
   }
 
@@ -75,11 +82,24 @@ export default class extends Component {
     });
   };
 
+  _onHandleChange = (inEvent) => {
+    const { type, value } = inEvent.target;
+    if (type === 'drag') {
+      var rate = value.x / this.barBound.width;
+      if (rate <= 1) {
+        this.audio.move(rate);
+        this.setState({
+          step: (100 * rate).toFixed(2) + '%'
+        });
+      }
+    }
+  };
+
   render() {
     const { className, src, title, description, ...props } = this.props;
     const { status, rate, step, info } = this.state;
     return (
-      <div className={classNames('react-audio', className)} {...props}>
+      <section className={classNames('react-audio', className)} {...props}>
         {src && (
           <audio
             className="react-audio__element"
@@ -118,23 +138,20 @@ export default class extends Component {
             <section className="flex1 react-audio__content">
               <header className="hd">
                 <div className="react-audio__title">{title}</div>
-                <div className="react-audio__rate">
-                  <select
-                    onChange={this._onRateChange}
-                    name="rate"
-                    value={rate}>
-                    <option value="1">常速</option>
-                    <option value="1.25">x1.25 倍</option>
-                    <option value="1.5">x1.5 倍</option>
-                    <option value="1.75">x1.75 倍</option>
-                    <option value="2">x2 倍</option>
-                  </select>
-                </div>
+                <select
+                  onChange={this._onRateChange}
+                  name="rate"
+                  className="react-audio__rate"
+                  value={rate}>
+                  <option value="1">常速</option>
+                  <option value="1.25">x1.25 倍</option>
+                  <option value="1.5">x1.5 倍</option>
+                  <option value="1.75">x1.75 倍</option>
+                  <option value="2">x2 倍</option>
+                </select>
               </header>
               <footer className="ft">
-                <div className="react-audio__description">
-                  {description}
-                </div>
+                <div className="react-audio__description">{description}</div>
                 <div className="react-audio__times">
                   <span className="current">{format(info.current)}</span> /{' '}
                   <span className="total">{format(info.total)}</span>
@@ -143,14 +160,17 @@ export default class extends Component {
             </section>
           </div>
           <footer className="ft">
-            <div
-              style={{ width: step }}
-              className="react-audio__progress"
-            />
-            <div style={{ left: step }} className="react-audio__handle" />
+            <section ref={this.barElement} className="bar">
+              <div style={{ width: step }} className="react-audio__progress" />
+              <div
+                style={{ left: step }}
+                ref={this.handleElement}
+                className="react-audio__handle"
+              />
+            </section>
           </footer>
         </div>
-      </div>
+      </section>
     );
   }
 }
