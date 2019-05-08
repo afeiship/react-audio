@@ -108,15 +108,15 @@ export default class extends Component {
         <div className="react-audio__control">
           <div className="bd">
             <aside className="react-audio__status">
-              {status === NxAudio.STATUS.init && (
+              {(status === NxAudio.STATUS.init ||
+                status === NxAudio.STATUS.pause) && (
                 <button
                   onClick={this._onAction.bind(this, 'play')}
                   className="action play">
                   <img src={require('./assets/icon-play.png')} />
                 </button>
               )}
-              {(status === NxAudio.STATUS.pause ||
-                status === NxAudio.STATUS.play ||
+              {(status === NxAudio.STATUS.play ||
                 status === NxAudio.STATUS.timeupdate) && (
                 <button
                   onClick={this._onAction.bind(this, 'pause')}
