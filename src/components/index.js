@@ -22,18 +22,12 @@ export default class extends Component {
   /*===properties start===*/
   static propTypes = {
     className: PropTypes.string,
-    value: PropTypes.object,
     src: PropTypes.string,
     title: PropTypes.string,
-    description: PropTypes.string,
-    onChange: PropTypes.func
+    description: PropTypes.string
   };
 
-  static defaultProps = {
-    value: null,
-    step: 0,
-    onChange: noop
-  };
+  static defaultProps = {};
   /*===properties end===*/
 
   constructor(inProps) {
@@ -41,6 +35,7 @@ export default class extends Component {
     this.state = {
       status: NxAudio.STATUS.init,
       rate: 1,
+      step: 0,
       info: { current: 0, total: 0 }
     };
     this.audioElement = React.createRef();
@@ -106,7 +101,7 @@ export default class extends Component {
             hidden
             ref={this.audioElement}
             src={src}>
-            NOT SUPPORT.
+            NOT SUPPORT AUDIO.
           </audio>
         )}
 
@@ -154,9 +149,7 @@ export default class extends Component {
                 </select>
               </header>
               <footer className="ft">
-                <div className="react-audio__description">
-                  {description}
-                </div>
+                <div className="react-audio__description">{description}</div>
                 <div className="react-audio__times">
                   <span className="current">{format(info.current)}</span> /{' '}
                   <span className="total">{format(info.total)}</span>
@@ -166,10 +159,7 @@ export default class extends Component {
           </div>
           <footer className="ft">
             <section ref={this.barElement} className="bar">
-              <div
-                style={{ width: step }}
-                className="react-audio__progress"
-              />
+              <div style={{ width: step }} className="react-audio__progress" />
               <div
                 style={{ left: step }}
                 ref={this.handleElement}
