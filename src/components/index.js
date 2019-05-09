@@ -81,7 +81,7 @@ export default class extends Component {
   _onHandleChange = (inEvent) => {
     const { value } = inEvent.target;
     if (inEvent.type === 'drag') {
-      var rate = value.x / this.barBound.width;
+      var rate = (value.x - this.barBound.left) / this.barBound.width;
       if (rate <= 1) {
         this.audio.move(rate);
         this.setState({
