@@ -1,13 +1,13 @@
 {
   "name": "react-audio",
-  "version": "1.0.1-alpha.17",
+  "version": "1.0.1-alpha.19",
   "description": "Audio player components for react.",
   "main": "dist/index.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --env.TYPE=dev",
-    "build": "cross-env NODE_ENV=production webpack -p --env.TYPE=build",
-    "release": "cross-env NODE_ENV=production webpack -p --env.TYPE=release",
-    "docs": "cross-env NODE_ENV=production webpack -p --env.TYPE=docs",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --env.type=dev",
+    "build": "cross-env NODE_ENV=production webpack -p --env.type=build",
+    "release": "cross-env NODE_ENV=production webpack -p --env.type=release",
+    "docs": "cross-env NODE_ENV=production webpack -p --env.type=docs",
     "start": "node build/server.js",
     "test": "jest"
   },

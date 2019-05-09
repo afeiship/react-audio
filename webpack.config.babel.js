@@ -1,3 +1,3 @@
 export default (inEnv) => {
-  return require(`./build/${inEnv.TYPE}`).default;
+  return require(`./build/${inEnv.type}`).default;
 };
