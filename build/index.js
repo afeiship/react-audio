@@ -13,7 +13,7 @@ export default {
     extensions: ['.scss', '.js', '.jsx'],
     alias: {
       '@': resolve(__dirname, '../src'),
-      'assets': resolve(__dirname, '../src/assets')
+      assets: resolve(__dirname, '../src/assets')
     }
   },
   module: {
@@ -29,6 +29,7 @@ export default {
           'style-loader',
           MiniCssExtractPlugin.loader,
           'css-loader',
+          'postcss-loader',
           'sass-loader'
         ]
       },
@@ -36,7 +37,7 @@ export default {
         test: /\.(jpe?g|png|gif|svg|ico)$/i,
         loader: 'url-loader',
         options: {
-          name: 'assets/[name].[ext]',
+          name: 'assets/images/[name].[ext]',
           limit: 8192
         }
       }
@@ -45,7 +46,7 @@ export default {
   plugins: [
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
-      filename: './assets/[name].[contenthash].css'
+      filename: './assets/styles/[name].[contenthash].css'
     })
   ]
 };

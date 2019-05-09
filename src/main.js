@@ -1,2 +1,2 @@
-import BoilerplateReactComponent from './components';
-export default BoilerplateReactComponent;
+import ReactAudio from './components';
+export default ReactAudio;
