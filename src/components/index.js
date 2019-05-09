@@ -7,6 +7,7 @@ import NxAudio from 'next-audio';
 import objectAssign from 'object-assign';
 import nxTimeformat from 'next-time-format';
 import NxDraggable from 'next-draggable';
+import RCM from 'react-condition-manager';
 
 const format = function(inTime) {
   if (inTime) {
@@ -96,42 +97,31 @@ export default class extends Component {
     return (
       <section className={classNames('react-audio', className)} {...props}>
         {src && (
-          <audio
-            className="react-audio__element"
-            hidden
-            ref={this.audioElement}
-            src={src}>
+          <audio className="react-audio__element" hidden ref={this.audioElement} src={src}>
             NOT SUPPORT AUDIO.
           </audio>
         )}
 
         <div className="react-audio__control">
           <div className="bd">
-            <aside className="react-audio__status">
-              {(status === NxAudio.STATUS.init ||
-                status === NxAudio.STATUS.pause) && (
-                <button
-                  onClick={this._onAction.bind(this, 'play')}
-                  className="action play">
-                  <img src={require('./assets/icon-play.png')} />
-                </button>
-              )}
-              {status === NxAudio.STATUS.play && (
-                <button
-                  onClick={this._onAction.bind(this, 'pause')}
-                  className="action pause">
-                  <img src={require('./assets/icon-pause.png')} />
-                </button>
-              )}
+            <RCM
+              className="react-audio__status"
+              items={[
+                status === NxAudio.STATUS.init || status === NxAudio.STATUS.pause,
+                status === NxAudio.STATUS.play,
+                status === NxAudio.STATUS.ended
+              ]}>
+              <button onClick={this._onAction.bind(this, 'play')} className="action play">
+                <img src={require('./assets/icon-play.png')} />
+              </button>
+              <button onClick={this._onAction.bind(this, 'pause')} className="action pause">
+                <img src={require('./assets/icon-pause.png')} />
+              </button>
 
-              {status === NxAudio.STATUS.ended && (
-                <button
-                  onClick={this._onAction.bind(this, 'play')}
-                  className="action ended">
-                  <img src={require('./assets/icon-replay.png')} />
-                </button>
-              )}
-            </aside>
+              <button onClick={this._onAction.bind(this, 'play')} className="action ended">
+                <img src={require('./assets/icon-replay.png')} />
+              </button>
+            </RCM>
             <section className="flex1 react-audio__content">
               <header className="hd">
                 <div className="react-audio__title">{title}</div>
