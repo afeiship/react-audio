@@ -12,6 +12,9 @@ body,
 .app-container {
   font-family: "PingFangSC-Medium";
   padding: 20px;
+  .row {
+    margin-bottom: 20px;
+  }
 }
 
 @import "@/components/style.scss";

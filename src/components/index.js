@@ -122,12 +122,11 @@ export default class extends Component {
                 <img src={require('./assets/icon-replay.png')} />
               </button>
             </RCM>
-            <section className="flex1 react-audio__content">
+            <section className="react-audio__content">
               <header className="hd">
                 <div className="react-audio__title">{title}</div>
                 <select
                   onChange={this._onRateChange}
-                  name="rate"
                   className="react-audio__rate"
                   value={rate}>
                   <option value="1">常速</option>
