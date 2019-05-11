@@ -124,6 +124,7 @@ $react-audio-options: (
     width: 100%;
     position: absolute;
     top: 1px;
+    left: $handle-size;
     z-index: 3;
     opacity: 0.8;
     background-image: repeating-linear-gradient(-45deg, #ccc, #ccc 20px, #eee 20px, #eee 40px);
