@@ -49,9 +49,20 @@ export default class extends Component {
     const handleEl = this.handleElement.current;
     const barEl = this.barElement.current;
     this.barBound = barEl.getBoundingClientRect();
-    this.audio = new NxAudio(audioEl, { onChange: this._onChange });
+    this.audio = new NxAudio(audioEl, {
+      onChange: this._onAudioChange
+    });
     this.draggable = new NxDraggable(handleEl, {
       onChange: this._onHandleChange
+    });
+  }
+
+  updateMeta() {
+    this.setState({
+      info: {
+        current: this.audio.times.current,
+        total: this.audio.times.total
+      }
     });
   }
 
@@ -59,15 +70,13 @@ export default class extends Component {
     this.audio[inAction]();
   };
 
-  _onChange = (inEvent) => {
-    const { type } = inEvent;
+  _onAudioChange = (inEvent) => {
+    const { times, status } = this.audio;
+    this.updateMeta();
     this.setState({
-      step: this.audio.times.rate * 100 + '%',
-      status: this.audio.status,
-      info: {
-        current: this.audio.times.current,
-        total: this.audio.times.total
-      }
+      step: times.rate * 100 + '%',
+      status: status,
+      info: { current: times.current, total: times.total }
     });
   };
 
@@ -107,7 +116,9 @@ export default class extends Component {
             <RCM
               className="react-audio__status"
               items={[
-                status === NxAudio.STATUS.init || status === NxAudio.STATUS.pause,
+                status === NxAudio.STATUS.init ||
+                  status === NxAudio.STATUS.pause ||
+                  status === NxAudio.STATUS.loaded,
                 status === NxAudio.STATUS.play,
                 status === NxAudio.STATUS.ended
               ]}>
@@ -125,10 +136,7 @@ export default class extends Component {
             <section className="react-audio__content">
               <header className="hd">
                 <div className="react-audio__title">{title}</div>
-                <select
-                  onChange={this._onRateChange}
-                  className="react-audio__rate"
-                  value={rate}>
+                <select onChange={this._onRateChange} className="react-audio__rate" value={rate}>
                   <option value="1">常速</option>
                   <option value="1.25">x1.25 倍</option>
                   <option value="1.5">x1.5 倍</option>
