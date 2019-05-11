@@ -128,7 +128,6 @@ export default class extends Component {
               <button onClick={this._onAction.bind(this, 'pause')} className="action pause">
                 <img src={require('./assets/icon-pause.png')} />
               </button>
-
               <button onClick={this._onAction.bind(this, 'play')} className="action ended">
                 <img src={require('./assets/icon-replay.png')} />
               </button>
