@@ -34,6 +34,7 @@ export default class extends Component {
   constructor(inProps) {
     super(inProps);
     this.state = {
+      loaded: false,
       status: NxAudio.STATUS.init,
       rate: 1,
       step: 0,
@@ -72,6 +73,8 @@ export default class extends Component {
 
   _onAudioChange = (inEvent) => {
     const { times, status } = this.audio;
+    const { type } = inEvent;
+    type === 'loadedmetadata' && this.setState({ loaded: true });
     this.updateMeta();
     this.setState({
       step: times.rate * 100 + '%',
@@ -102,9 +105,9 @@ export default class extends Component {
 
   render() {
     const { className, src, title, description, ...props } = this.props;
-    const { status, rate, step, info } = this.state;
+    const { status, rate, step, info, loaded } = this.state;
     return (
-      <section className={classNames('react-audio', className)} {...props}>
+      <section className={classNames('react-audio', className)} {...props} data-loaded={loaded}>
         {src && (
           <audio className="react-audio__element" hidden ref={this.audioElement} src={src}>
             NOT SUPPORT AUDIO.
@@ -160,9 +163,12 @@ export default class extends Component {
                 ref={this.handleElement}
                 className="react-audio__handle"
               />
+              <div className="react-audio__progress-animate" />
             </section>
           </footer>
         </div>
+
+        <div className="react-audio__overlay" />
       </section>
     );
   }
