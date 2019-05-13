@@ -4,6 +4,9 @@ import React from 'react';
 import './assets/style.scss';
 
 class App extends React.Component {
+  _onAudioChange = (e) => {
+    console.log(e.target);
+  };
   render() {
     return (
       <div className="app-container">
@@ -19,6 +22,7 @@ class App extends React.Component {
 
         <div className="row">
           <ReactAudio
+            onChange={this._onAudioChange}
             title="2019年食品安全经济研讨会2.mp3"
             description="王兆川教授王兆川教授王兆川教授"
             src="https://tsscdn.finxos.com/tu-resources/xlsfile/media/1.mp3"
