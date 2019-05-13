@@ -25,20 +25,24 @@ export default class extends Component {
     className: PropTypes.string,
     src: PropTypes.string,
     title: PropTypes.string,
-    description: PropTypes.string
+    description: PropTypes.string,
+    meta: PropTypes.object
   };
 
-  static defaultProps = {};
+  static defaultProps = {
+    meta: null
+  };
   /*===properties end===*/
 
   constructor(inProps) {
     super(inProps);
+    const { meta } = inProps;
     this.state = {
-      loaded: false,
+      loaded: !!meta,
       status: NxAudio.STATUS.init,
       rate: 1,
       step: 0,
-      info: { current: 0, total: 0 }
+      meta: meta || { current: 0, total: 0 }
     };
     this.audioElement = React.createRef();
     this.handleElement = React.createRef();
@@ -60,7 +64,7 @@ export default class extends Component {
 
   updateMeta() {
     this.setState({
-      info: {
+      meta: {
         current: this.audio.times.current,
         total: this.audio.times.total
       }
@@ -79,7 +83,7 @@ export default class extends Component {
     this.setState({
       step: times.rate * 100 + '%',
       status: status,
-      info: { current: times.current, total: times.total }
+      meta: { current: times.current, total: times.total }
     });
   };
 
@@ -104,8 +108,8 @@ export default class extends Component {
   };
 
   render() {
-    const { className, src, title, description, ...props } = this.props;
-    const { status, rate, step, info, loaded } = this.state;
+    const { className, src, title, description, meta, ...props } = this.props;
+    const { status, rate, step, loaded } = this.state;
     return (
       <section className={classNames('react-audio', className)} {...props} data-loaded={loaded}>
         {src && (
@@ -149,8 +153,8 @@ export default class extends Component {
               <footer className="ft">
                 <div className="react-audio__description">{description}</div>
                 <div className="react-audio__times">
-                  <span className="current">{format(info.current)}</span> /{' '}
-                  <span className="total">{format(info.total)}</span>
+                  <span className="current">{format(this.state.meta.current)}</span> /{' '}
+                  <span className="total">{format(this.state.meta.total)}</span>
                 </div>
               </footer>
             </section>

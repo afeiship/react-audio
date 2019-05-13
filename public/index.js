@@ -10,6 +10,7 @@ class App extends React.Component {
         <h1>Mutli audios</h1>
         <div className="row">
           <ReactAudio
+            meta={{ current: 0, total: 200 }}
             title="2019年食品安全经济研讨会1.mp3"
             description="王兆川教授王兆川教授王兆川教授1212"
             src="http://kolber.github.io/audiojs/demos/mp3/juicy.mp3"
