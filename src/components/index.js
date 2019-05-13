@@ -26,11 +26,13 @@ export default class extends Component {
     src: PropTypes.string,
     title: PropTypes.string,
     description: PropTypes.string,
-    meta: PropTypes.object
+    meta: PropTypes.object,
+    onChange: PropTypes.func
   };
 
   static defaultProps = {
-    meta: null
+    meta: null,
+    onChange: noop
   };
   /*===properties end===*/
 
@@ -76,6 +78,7 @@ export default class extends Component {
   };
 
   _onAudioChange = (inEvent) => {
+    const { onChange } = this.props;
     const { times, status } = this.audio;
     const { type } = inEvent;
     type === 'loadedmetadata' && this.setState({ loaded: true });
@@ -85,6 +88,7 @@ export default class extends Component {
       status: status,
       meta: { current: times.current, total: times.total }
     });
+    onChange({ target: this.audio });
   };
 
   _onRateChange = (inEvent) => {
