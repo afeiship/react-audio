@@ -94,10 +94,11 @@ $react-audio-options: (
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    background: url(https://image-static.segmentfault.com/388/624/3886241463-5cd2b064f273d_articlex) 90% / 12% no-repeat
-      #eee;
+    background: #fff url(https://image-static.segmentfault.com/388/624/3886241463-5cd2b064f273d_articlex) 90% / 12% no-repeat;
     padding: 3px 16px;
     border-radius: 0;
+    height:20px;
+    line-height: 1.2;
     border: 1px solid #ccc;
   }
 
