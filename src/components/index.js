@@ -56,12 +56,8 @@ export default class extends Component {
     const handleEl = this.handleElement.current;
     const barEl = this.barElement.current;
     this.barBound = barEl.getBoundingClientRect();
-    this.audio = new NxAudio(audioEl, {
-      onChange: this._onAudioChange
-    });
-    this.draggable = new NxDraggable(handleEl, {
-      onChange: this._onHandleChange
-    });
+    this.audio = new NxAudio(audioEl, { onChange: this._onAudioChange });
+    this.draggable = new NxDraggable(handleEl, { onChange: this._onHandleChange });
   }
 
   updateMeta() {
