@@ -8,12 +8,13 @@ import objectAssign from 'object-assign';
 import nxTimeformat from 'next-time-format';
 import NxDraggable from 'next-draggable';
 import RCM from 'react-condition-manager';
+import nxPadStart from 'next-pad-start';
 
 const format = function(inTime) {
   if (inTime) {
     const { second, minute } = nxTimeformat(inTime * 1e3);
-    const _minute = String(minute).padStart(2, '0');
-    const _second = String(second).padStart(2, '0');
+    const _minute = nxPadStart(minute, 2, '0');
+    const _second = nxPadStart(second).padStart(2, '0');
     return _minute + ':' + _second;
   }
   return '00:00';
