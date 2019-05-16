@@ -1,13 +1,8 @@
 $react-audio-options: (
-  primary-color: #0157ff,
   handle-size: 14px
 ) !default;
 
 .react-audio {
-  $primary-color: map-get(
-    $map: $react-audio-options,
-    $key: primary-color
-  );
   $handle-size: map-get(
     $map: $react-audio-options,
     $key: handle-size
@@ -49,6 +44,10 @@ $react-audio-options: (
       display: flex;
       justify-content: space-between;
     }
+
+    > .hd {
+      color: #333;
+    }
   }
 
   &__status {
@@ -79,14 +78,12 @@ $react-audio-options: (
   }
 
   &__times {
-    color: #999;
     font-size: 12px;
     line-height: 22px;
     > .current {
-      color: $primary-color;
     }
     > .total {
-      color: #000;
+      color: #999;
     }
   }
 
@@ -94,10 +91,11 @@ $react-audio-options: (
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    background: #fff url(https://image-static.segmentfault.com/388/624/3886241463-5cd2b064f273d_articlex) 90% / 12% no-repeat;
+    background: #fff url(https://image-static.segmentfault.com/388/624/3886241463-5cd2b064f273d_articlex) 90% / 12%
+      no-repeat;
     padding: 3px 16px;
     border-radius: 0;
-    height:20px;
+    height: 20px;
     line-height: 1.2;
     border: 1px solid #ccc;
   }
@@ -105,9 +103,9 @@ $react-audio-options: (
   &__progress {
     position: absolute;
     z-index: 1;
-    height: 5px;
+    height: 0;
     left: 0;
-    background: $primary-color;
+    border-bottom: 5px solid;
   }
 
   &__overlay {

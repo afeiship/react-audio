@@ -11,7 +11,7 @@ class App extends React.Component {
     return (
       <div className="app-container">
         <h1>Mutli audios</h1>
-        <div className="row">
+        <div className="row" style={{ color: '#0157ff' }}>
           <ReactAudio
             meta={{ current: 0, total: 200 }}
             title="2019年食品安全经济研讨会1.mp3"
