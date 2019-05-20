@@ -84,8 +84,7 @@ export default class extends Component {
     this.updateMeta();
     this.setState({
       step: times.rate * 100 + '%',
-      status: status,
-      meta: { current: times.current, total: times.total }
+      status: status
     });
     onChange({ target: this.audio });
   };
