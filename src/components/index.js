@@ -62,10 +62,12 @@ export default class extends Component {
   }
 
   updateMeta() {
+    const { current, total } = this.audio.times;
+    const { meta } = this.props;
     this.setState({
       meta: {
-        current: this.audio.times.current,
-        total: this.audio.times.total
+        current: current,
+        total: meta ? meta.total : total
       }
     });
   }
