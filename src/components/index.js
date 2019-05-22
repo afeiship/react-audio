@@ -112,6 +112,7 @@ export default class extends Component {
   render() {
     const { className, src, title, description, meta, ...props } = this.props;
     const { status, rate, step, loaded } = this.state;
+
     return (
       <section className={classNames('react-audio', className)} {...props} data-loaded={loaded}>
         {src && (
@@ -129,16 +130,22 @@ export default class extends Component {
                   status === NxAudio.STATUS.pause ||
                   status === NxAudio.STATUS.loaded,
                 status === NxAudio.STATUS.play,
-                status === NxAudio.STATUS.ended
+                status === NxAudio.STATUS.ended,
+                status === NxAudio.STATUS.error
               ]}>
-              <button onClick={this._onAction.bind(this, 'play')} className="action play">
-                <img src={require('./assets/icon-play.png')} />
+              <button
+                onClick={this._onAction.bind(this, 'play')}
+                className="react-audio__icon">
+                <img className="icon--play" src={require('./assets/icon-sprites.png')} />
               </button>
-              <button onClick={this._onAction.bind(this, 'pause')} className="action pause">
-                <img src={require('./assets/icon-pause.png')} />
+              <button onClick={this._onAction.bind(this, 'pause')} className="react-audio__icon">
+                <img className="icon--pause" src={require('./assets/icon-sprites.png')} />
               </button>
-              <button onClick={this._onAction.bind(this, 'play')} className="action ended">
-                <img src={require('./assets/icon-replay.png')} />
+              <button onClick={this._onAction.bind(this, 'play')} className="react-audio__icon">
+                <img className="icon--replay" src={require('./assets/icon-sprites.png')} />
+              </button>
+              <button onClick={this._onAction.bind(this, 'error')} className="react-audio__icon">
+                <img className="icon--error" src={require('./assets/icon-sprites.png')} />
               </button>
             </RCM>
             <section className="react-audio__content">

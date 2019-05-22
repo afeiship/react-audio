@@ -8,11 +8,38 @@ $react-audio-options: (
     $key: handle-size
   );
 
+  // audio private status:
+  $react-audio-status-sprites: (play, pause, replay, error);
+
   border: 1px solid #e7e7e7;
   border-bottom: none;
   border-radius: 2px;
   user-select: none;
   position: relative;
+
+  [class$="__icon"] {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: none;
+    box-shadow: 0 2px 5px 0 rgba(#000, 0.05);
+    -webkit-tap-highlight-color: rgba(#000, 0);
+    cursor: pointer;
+    &:active {
+      background: #eee;
+    }
+    &:focus {
+      outline: none;
+    }
+
+    > img {
+      width: 12px;
+      height: 12px;
+      object-fit: cover;
+    }
+  }
 
   &__control {
     > .bd {
@@ -177,29 +204,14 @@ $react-audio-options: (
     }
   }
 
-  .action {
-    position: relative;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: #ffffff;
-    border: none;
-    box-shadow: 0 2px 5px 0 rgba(#000, 0.05);
-    -webkit-tap-highlight-color: rgba(#000, 0);
-    cursor: pointer;
-    > img {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      width: 12px;
-      height: 12px;
-      transform: translate(-50%, -50%);
-    }
-    &:active {
-      background: #eee;
-    }
-    &:focus {
-      outline: none;
+  // audio status:
+  @each $icon in $react-audio-status-sprites {
+    $index: index($react-audio-status-sprites, $icon) - 1;
+    $pos-y: $index * -12;
+    .icon {
+      &--#{$icon} {
+        object-position: 0 #{$pos-y}px;
+      }
     }
   }
 }

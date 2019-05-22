@@ -18,10 +18,11 @@ export default merge(baseConfig, {
     'react-condition-mananger': 'react-condition-mananger',
     'next-time-format': 'next-time-format',
     'next-audio': 'next-audio',
+    'next-pad-start': 'next-pad-start',
     'next-draggable': 'next-draggable',
     'react-dom': 'react-dom',
     'object-assign': 'object-assign',
-    'prop-types': 'prop-types'
+    'prop-types': 'prop-types',
   },
   plugins: [
     new SemverWebpackPlugin({ enabled: true }),
