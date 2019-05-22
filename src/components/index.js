@@ -80,7 +80,7 @@ export default class extends Component {
     const { onChange } = this.props;
     const { times, status } = this.audio;
     const { type } = inEvent;
-    type === 'loadedmetadata' && this.setState({ loaded: true });
+    (type === 'loadedmetadata' || type === 'error') && this.setState({ loaded: true });
     this.updateMeta();
     this.setState({
       step: times.rate * 100 + '%',
@@ -133,9 +133,7 @@ export default class extends Component {
                 status === NxAudio.STATUS.ended,
                 status === NxAudio.STATUS.error
               ]}>
-              <button
-                onClick={this._onAction.bind(this, 'play')}
-                className="react-audio__icon">
+              <button onClick={this._onAction.bind(this, 'play')} className="react-audio__icon">
                 <img className="icon--play" src={require('./assets/icon-sprites.png')} />
               </button>
               <button onClick={this._onAction.bind(this, 'pause')} className="react-audio__icon">
