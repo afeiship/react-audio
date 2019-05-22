@@ -21,6 +21,7 @@ export default merge(baseConfig, {
     'prop-types': 'prop-types'
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new SemverWebpackPlugin({
       enabled: true,
       callback: function(inVersion) {

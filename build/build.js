@@ -22,9 +22,10 @@ export default merge(baseConfig, {
     'next-draggable': 'next-draggable',
     'react-dom': 'react-dom',
     'object-assign': 'object-assign',
-    'prop-types': 'prop-types',
+    'prop-types': 'prop-types'
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new SemverWebpackPlugin({ enabled: true }),
     new CopyWebpackPlugin([
       {
