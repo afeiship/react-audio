@@ -144,7 +144,7 @@ export default class extends Component {
               <button onClick={this._onAction.bind(this, 'play')} className="react-audio__icon">
                 <img className="icon--replay" src={require('./assets/icon-sprites.png')} />
               </button>
-              <button onClick={this._onAction.bind(this, 'error')} className="react-audio__icon">
+              <button className="react-audio__icon">
                 <img className="icon--error" src={require('./assets/icon-sprites.png')} />
               </button>
             </RCM>

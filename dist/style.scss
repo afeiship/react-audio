@@ -214,7 +214,6 @@ $react-audio-options: (
   @each $icon in $react-audio-status-sprites {
     $index: index($react-audio-status-sprites, $icon) - 1;
     $pos-y: -1 * $index * $icon-size;
-    @debug $pos-y;
     .icon {
       &--#{$icon} {
         object-position: 0 $pos-y;
