@@ -1,6 +1,6 @@
 {
   "name": "react-audio",
-  "version": "1.0.1-alpha.47",
+  "version": "1.0.1-alpha.48",
   "description": "Audio player components for react.",
   "main": "dist/index.js",
   "scripts": {

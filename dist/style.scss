@@ -1,11 +1,17 @@
 $react-audio-options: (
-  handle-size: 14px
+  handle-size: 14px,
+  icon-size: 15px
 ) !default;
 
 .react-audio {
   $handle-size: map-get(
     $map: $react-audio-options,
     $key: handle-size
+  );
+
+  $icon-size: map-get(
+    $map: $react-audio-options,
+    $key: icon-size
   );
 
   // audio private status:
@@ -35,8 +41,8 @@ $react-audio-options: (
     }
 
     > img {
-      width: 12px;
-      height: 12px;
+      width: $icon-size;
+      height: $icon-size;
       object-fit: cover;
     }
   }
@@ -207,10 +213,11 @@ $react-audio-options: (
   // audio status:
   @each $icon in $react-audio-status-sprites {
     $index: index($react-audio-status-sprites, $icon) - 1;
-    $pos-y: $index * -12;
+    $pos-y: -1 * $index * $icon-size;
+    @debug $pos-y;
     .icon {
       &--#{$icon} {
-        object-position: 0 #{$pos-y}px;
+        object-position: 0 $pos-y;
       }
     }
   }

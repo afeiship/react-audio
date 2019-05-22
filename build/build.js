@@ -1,4 +1,5 @@
 import { resolve } from 'path';
+import CleanWebpackPlugin from 'clean-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import baseConfig from '.';
 import merge from 'webpack-merge';
