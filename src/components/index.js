@@ -9,6 +9,7 @@ import nxTimeformat from 'next-time-format';
 import NxDraggable from 'next-draggable';
 import RCM from 'react-condition-manager';
 import nxPadStart from 'next-pad-start';
+import nxGetKey from 'next-get-key';
 
 const format = function(inTime) {
   if (inTime) {
@@ -114,7 +115,11 @@ export default class extends Component {
     const { status, rate, step, loaded } = this.state;
 
     return (
-      <section className={classNames('react-audio', className)} {...props} data-loaded={loaded}>
+      <section
+        className={classNames('react-audio', className)}
+        data-audio-status={nxGetKey(NxAudio.STATUS, status)}
+        data-loaded={loaded}
+        {...props}>
         {src && (
           <audio className="react-audio__element" hidden ref={this.audioElement} src={src}>
             NOT SUPPORT AUDIO.

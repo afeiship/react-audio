@@ -1,6 +1,6 @@
 {
   "name": "react-audio",
-  "version": "1.0.1-alpha.51",
+  "version": "1.0.1-alpha.52",
   "description": "Audio player components for react.",
   "main": "dist/index.js",
   "scripts": {
@@ -60,6 +60,7 @@
     "classnames": "^2.2.6",
     "next-audio": "github:afeiship/next-audio",
     "next-draggable": "github:afeiship/next-draggable",
+    "next-get-key": "github:afeiship/next-get-key",
     "next-pad-start": "github:afeiship/next-pad-start",
     "next-time-format": "github:afeiship/next-time-format",
     "noop": "github:afeiship/noop",
