@@ -131,6 +131,7 @@ export default class extends Component {
               className="react-audio__status"
               items={[
                 status === NxAudio.STATUS.init ||
+                status === NxAudio.STATUS.canplay ||
                   status === NxAudio.STATUS.pause ||
                   status === NxAudio.STATUS.loaded,
                 status === NxAudio.STATUS.play,
