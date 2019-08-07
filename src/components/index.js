@@ -61,6 +61,18 @@ export default class extends Component {
     this.draggable = new NxDraggable(handleEl, { onChange: this._onHandleChange });
   }
 
+  componentWillReceiveProps(inNextProps) {
+    const { src } = inNextProps;
+    const _src = this.props.src;
+    if (this.audio && src !== _src) {
+      setTimeout(() => {
+        this.audio = new NxAudio(this.audioElement.current, {
+          onChange: this._onAudioChange
+        });
+      });
+    }
+  }
+
   updateMeta() {
     const { current, total } = this.audio.times;
     const { meta } = this.props;
@@ -131,7 +143,7 @@ export default class extends Component {
               className="react-audio__status"
               items={[
                 status === NxAudio.STATUS.init ||
-                status === NxAudio.STATUS.canplay ||
+                  status === NxAudio.STATUS.canplay ||
                   status === NxAudio.STATUS.pause ||
                   status === NxAudio.STATUS.loaded,
                 status === NxAudio.STATUS.play,
